@@ -8,7 +8,9 @@ package controller;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -27,6 +29,9 @@ public class BusinessObj {
         this.businessName = businessName;
         this.businessConNum = businessConNum;
         this.totalNumWorkers = totalNumWorkers;
+    }
+    
+    public BusinessObj(){
     }
     
 
@@ -84,5 +89,38 @@ public class BusinessObj {
             Logger.getLogger(WorkerObj.class.getName()).log(Level.SEVERE, null, ex); 
     }
     }
+    
+  public HashMap getBusinessOptions() throws SQLException{
+        //return a hasMap which I can then use for the Role type, which
+        //we can then use to link the workers role to the specific Id's that have 
+        //been input into the worker_role table anyway
+        HashMap<Integer, String> hmap = new HashMap<Integer, String>(); 
+        
+        String sql = "SELECT BUSINESS_ID, NAME FROM BUSINESS";
+            
+            DriverManager.registerDriver (new oracle.jdbc.driver.OracleDriver());
+            
+            try (Connection con = DriverManager.getConnection(url, "jgoodman", "g00dmans");
+            PreparedStatement stmt = con.prepareStatement(sql);
+              ){
+            
+                
+                ResultSet rs = stmt.executeQuery(sql);
+                 
+                while(rs.next()){
+                     
+                    hmap.put(rs.getInt("BUSINESS_ID"), rs.getString("NAME"));
+//                     System.out.print(rs.getInt("ROLE_ID"));
+//                     System.out.println(rs.getString("ROLE_DESCRIPTION"));
+                }
+         
+         
+    } catch (SQLException ex) {
+            System.out.println("no customer found");
+            Logger.getLogger(WorkerObj.class.getName()).log(Level.SEVERE, null, ex); 
+    }
+            return hmap;
+    }
+    
     
 }

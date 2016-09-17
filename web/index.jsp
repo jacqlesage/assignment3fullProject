@@ -4,6 +4,10 @@
     Author     : jgoodman
 --%>
 
+<%@page import="controller.BusinessTypeObj"%>
+<%@page import="java.util.Set"%>
+<%@page import="java.util.Map.Entry"%>
+<%@page import="java.util.HashMap"%>
 <%@page import="controller.WorkerRoleObj"%>
 <%@page import="controller.BusinessObj"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -16,6 +20,8 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <%WorkerRoleObj wro = new WorkerRoleObj(); %>
+        <%BusinessObj bo = new BusinessObj(); %>
+        <%BusinessTypeObj bto = new BusinessTypeObj(); %>
         
     </head>
     
@@ -142,17 +148,47 @@
   </div>
     
       <div class="form-group">
-          <label for="inputEmail3" class="col-sm-2 control-label">ROLE_ID DROP DOWN HERE<%out.print("<p>" + wro.getRoleOptions() + "</p>" ); %></label>
-    <div class="col-sm-10">
-      <input type="text" class="form-control" id="" name="" placeholder="Start Date">
-    </div>
-  </div>
+          <label for="inputEmail3" class="col-sm-2 control-label">Role </label>
+              <select id="wkRoleOption" name="wkRoleOption">
+                  
+                  <% 
+                      HashMap workerRoleMap = wro.getRoleOptions(); 
+                      Set<HashMap.Entry<Integer, String>> entrySet = workerRoleMap.entrySet();
+                      for (Entry<Integer, String> role : entrySet)
+                      {
+                    %>
+                         <option value="<%=role.getKey()%>">
+                             <%=role.getValue() %>
+                         </option>
+                    <%
+                      }
+                  %>
+                  
+                  
+              </select>  
+           
+           </div>
     
       <div class="form-group">
-    <label for="inputEmail3" class="col-sm-2 control-label">BUSINESS_ID DROP DOWN HERE?</label>
-    <div class="col-sm-10">
-      <input type="text" class="form-control" id="" name="" placeholder="Start Date">
-    </div>
+    <label for="inputEmail3" class="col-sm-2 control-label">BUSINESS</label>
+     <select id="wkBusinesOption" name="wkBusinessOption">
+                  
+                  <% 
+                      HashMap businessMap = bo.getBusinessOptions(); 
+                      Set<HashMap.Entry<Integer, String>> entrySet2 = businessMap.entrySet();
+                      for (Entry<Integer, String> type : entrySet2)
+                      {
+                    %>
+                         <option value="<%=type.getKey()%>">
+                             <%=type.getValue() %>
+                         </option>
+                    <%
+                      }
+                  %>
+                  
+                  
+              </select>  
+    
   </div>
     
     
@@ -169,28 +205,29 @@
       <input type="text" class="form-control" id="busConNum" name="busConNum" placeholder="Business contact number">
     </div>
   </div>
-    
-     <div class="form-group">
-    <label for="inputEmail3" class="col-sm-2 control-label">total number of workers</label>
-    <div class="col-sm-10">
-      <input type="number" class="form-control" id="totalWorkers" name="totalWorkers" placeholder="Total number of workers">
-    </div>
-  </div>
-    
+            
        <div class="form-group">
-    <label for="inputEmail3" class="col-sm-2 control-label">TYPE ID DROP DOWN HERE  </label>
-    <div class="col-sm-10">
-      <input type="email" class="form-control" id="" placeholder="Email">
-    </div>
+    <label for="inputEmail3" class="col-sm-2 control-label">Business type </label>
+    
+    <select id="">
+                  
+                  <% 
+                      HashMap businessTypeMap = bto.getBusinessTypeOptions(); 
+                      Set<HashMap.Entry<Integer, String>> busTypeSet = businessTypeMap.entrySet();
+                      for (Entry<Integer, String> type : busTypeSet)
+                      {
+                    %>
+                         <option value="<%=type.getKey()%>">
+                             <%=type.getValue() %>
+                         </option>
+                    <%
+                      }
+                  %>
+                  
+                  
+              </select>  
+    
   </div>
-     
-       <div class="form-group">
-    <label for="inputEmail3" class="col-sm-2 control-label">OR create new TYPE here</label>
-    <div class="col-sm-10">
-      <input type="email" class="form-control" id="" placeholder="user a js checkbox to open and close other">
-    </div>
-  </div>
-   
 
   <div class="form-group">
     <div class="col-sm-offset-2 col-sm-10">

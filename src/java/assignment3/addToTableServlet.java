@@ -57,6 +57,8 @@ public class addToTableServlet extends HttpServlet {
             out.println("<p>"+request.getParameter("isActive")+"</p>");
             out.println("<p>"+request.getParameter("startDate")+"</p>");
             out.println("<p>"+request.getParameter("busConNum")+"</p>");
+            out.println("<p>"+request.getParameter("wkRoleOption")+"</p>");
+            out.println("<p>"+request.getParameter("wkBusinessOption")+"</p>");
             out.println("</body>");
             out.println("</html>");
             
