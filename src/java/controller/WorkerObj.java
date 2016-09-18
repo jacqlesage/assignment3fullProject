@@ -10,10 +10,12 @@ import java.sql.Connection;
 import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -43,17 +45,11 @@ public class WorkerObj {
         this.start_date = start_date;
         this.is_Active = is_Active;
     }
+
+    public WorkerObj() {
+    }
     
-//      public WorkerObj(int worker_id,String fName, String mName, String lName, String gender, String dob, String start_date, String is_Active) {
-//        this.fName = fName;
-//        this.mName = mName;
-//        this.lName = lName;
-//        this.gender = gender;
-//        this.dob = dob;
-//        this.start_date = start_date;
-//        this.is_Active = is_Active;
-//        this.worker_ID = worker_id;
-//    }
+
 
     public String getfName() {
         return fName;
@@ -166,5 +162,42 @@ public class WorkerObj {
     }
      }
      
+     public HashMap getWorkerNameOptions() throws SQLException{
+        //return a hasMap which I can then use for the Role type, which
+        //we can then use to link the workers role to the specific Id's that have 
+        //been input into the worker_role table anyway
+         HashMap<Integer, String> hmap = new HashMap<Integer, String>(); 
+        //should also have a where condition where active is = to on/1
+        String sql = "SELECT WORKER_ID, F_NAME, M_NAME, L_NAME FROM WORKER";
+            
+             DriverManager.registerDriver (new oracle.jdbc.driver.OracleDriver());
+            
+             try (Connection con = DriverManager.getConnection(url, "jgoodman", "g00dmans");
+            PreparedStatement stmt = con.prepareStatement(sql);
+              ){
+            
+                
+                ResultSet rs = stmt.executeQuery(sql);
+                 
+                 while(rs.next()){
+                   
+                     String temp = rs.getString("F_NAME");
+                      temp += " ";
+                      temp += rs.getString("M_NAME");
+                      temp += " ";
+                      temp += rs.getString("L_NAME");
+                     
+                      hmap.put(rs.getInt("WORKER_ID"),temp);
+//                     System.out.print(rs.getInt("ROLE_ID"));
+//                     System.out.println(rs.getString("ROLE_DESCRIPTION"));
+                 }
+         
+         
+    } catch (SQLException ex) {
+            System.out.println("no customer found");
+            Logger.getLogger(WorkerObj.class.getName()).log(Level.SEVERE, null, ex); 
+    }
+             return hmap;
+     }
       
 }

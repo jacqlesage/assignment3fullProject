@@ -4,6 +4,8 @@
     Author     : jgoodman
 --%>
 
+<%@page import="controller.WorkerObj"%>
+<%@page import="controller.IndustryObj"%>
 <%@page import="controller.BusinessTypeObj"%>
 <%@page import="java.util.Set"%>
 <%@page import="java.util.Map.Entry"%>
@@ -22,6 +24,8 @@
         <%WorkerRoleObj wro = new WorkerRoleObj(); %>
         <%BusinessObj bo = new BusinessObj(); %>
         <%BusinessTypeObj bto = new BusinessTypeObj(); %>
+        <%IndustryObj io = new IndustryObj(); %>
+        <%WorkerObj wo = new WorkerObj(); %>
         
     </head>
     
@@ -209,7 +213,7 @@
        <div class="form-group">
     <label for="inputEmail3" class="col-sm-2 control-label">Business type </label>
     
-    <select id="">
+    <select id="busTypeOption" name="busTypeOption">
                   
                   <% 
                       HashMap businessTypeMap = bto.getBusinessTypeOptions(); 
@@ -238,48 +242,99 @@
    
 </form>
 
-<form class="form-horizontal">
+<form class="form-horizontal" method="post" action="addToTableServlet">
     
     <h1>Add asset</h1>
-  <div class="form-group">
-    <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
+  <div class="form-group" >
+    <label for="inputEmail3" class="col-sm-2 control-label">Current condition</label>
     <div class="col-sm-10">
-      <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+      <input type="number" min="1" max="10" class="form-control" id="cur_condition" name="cur_condition" placeholder="Current condition ie 1 (lowest) 10 (best)">
     </div>
   </div>
   <div class="form-group">
-    <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
+    <label for="inputPassword3" class="col-sm-2 control-label">Install date</label>
     <div class="col-sm-10">
-      <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
+      <input type="text" class="form-control" id="ins_date" name="ins_date" placeholder="Install date DD/MM/YYYY format">
     </div>
   </div>
     
      <div class="form-group">
-    <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
+    <label for="inputEmail3" class="col-sm-2 control-label">Model</label>
     <div class="col-sm-10">
-      <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+      <input type="text" class="form-control" id="model" name="model" placeholder="Model name">
     </div>
   </div>
     
        <div class="form-group">
-    <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
+    <label for="inputEmail3" class="col-sm-2 control-label">Number of services</label>
     <div class="col-sm-10">
-      <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+      <input type="number" class="form-control" min="0" id="num_services" name="num_services" placeholder="Number of services i.e 1">
     </div>
   </div>
     
        <div class="form-group">
-    <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
+    <label for="inputEmail3" class="col-sm-2 control-label">Photo location</label>
     <div class="col-sm-10">
-      <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+      <input type="text" class="form-control" id="photo" name="photo" placeholder="File location">
     </div>
   </div>
     
        <div class="form-group">
-    <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
+    <label for="inputEmail3" class="col-sm-2 control-label">Purchase date</label>
     <div class="col-sm-10">
-      <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+      <input type="text" class="form-control" id="pur_date" name="pur_date" placeholder="Purchase date DD/MM/YYYY format">
     </div>
+  </div>
+    
+        <div class="form-group">
+    <label for="inputEmail3" class="col-sm-2 control-label">Serial number</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="serial_num" name="serial_num" placeholder="Serial number">
+    </div>
+  </div>
+    
+       <div class="form-group">
+    <label for="inputEmail3" class="col-sm-2 control-label">Industry type </label>
+    
+    <select id="indTypeOption" name="indTypeOption">
+                  
+                  <% 
+                      HashMap industryTypeMap = io.getIndustryOptions(); 
+                      Set<HashMap.Entry<Integer, String>> indTypeSet = industryTypeMap.entrySet();
+                      for (Entry<Integer, String> type : indTypeSet)
+                      {
+                    %>
+                         <option value="<%=type.getKey()%>">
+                             <%=type.getValue() %>
+                         </option>
+                    <%
+                      }
+                  %>
+                  
+                  
+              </select>  
+    
+  </div>
+    <div class="form-group">
+    <label for="inputEmail3" class="col-sm-2 control-label">BUSINESS</label>
+     <select id="wkBusinesOption" name="wkBusinessOption">
+                  
+                  <% 
+                      HashMap businessMapForAsset = bo.getBusinessOptions(); 
+                      Set<HashMap.Entry<Integer, String>> businessList = businessMapForAsset.entrySet();
+                      for (Entry<Integer, String> type : businessList)
+                      {
+                    %>
+                         <option value="<%=type.getKey()%>">
+                             <%=type.getValue() %>
+                         </option>
+                    <%
+                      }
+                  %>
+                  
+                  
+              </select>  
+    
   </div>
 
   <div class="form-group">
@@ -292,45 +347,107 @@
 <form class="form-horizontal">
     <h1>Add service log</h1>
   <div class="form-group">
-    <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
+    <label for="inputEmail3" class="col-sm-2 control-label">Date serviced</label>
     <div class="col-sm-10">
-      <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+      <input type="text" class="form-control" id="date_serviced" name="date_serviced" placeholder="Date serviced">
     </div>
   </div>
   <div class="form-group">
-    <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
+    <label for="inputPassword3" class="col-sm-2 control-label">Electrical test done</label>
     <div class="col-sm-10">
-      <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
+      <input type="text" class="form-control" id="elec_test_done" name="elec_test_done" placeholder="Electrical test done date">
     </div>
   </div>
     
      <div class="form-group">
-    <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
+    <label for="inputEmail3" class="col-sm-2 control-label">Calibration done</label>
     <div class="col-sm-10">
-      <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+      <input type="text" class="form-control" id="cali_done" name="cali_done" placeholder="Calibration done">
     </div>
   </div>
     
        <div class="form-group">
-    <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
+    <label for="inputEmail3" class="col-sm-2 control-label">Condition</label>
     <div class="col-sm-10">
-      <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+      <input type="number" min="1" max="10" class="form-control" id="condition" name ="condition" placeholder="Condition">
     </div>
   </div>
     
        <div class="form-group">
-    <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
+    <label for="inputEmail3" class="col-sm-2 control-label">Comments</label>
     <div class="col-sm-10">
-      <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+      <input type="text" class="form-control" id="comments" name="comments" placeholder="Comments">
     </div>
   </div>
-    
-       <div class="form-group">
-    <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
-    <div class="col-sm-10">
-      <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
-    </div>
-  </div>
+ 
+<!--need to show the asset serial number that the log relates to -->
+ <div class="form-group">
+          <label for="inputEmail3" class="col-sm-2 control-label">Asset serial number </label>
+              <select id="assetSerialNum" name="assetSerialNum">
+                  
+                  <% 
+                      HashMap assetSerialNum = wo.getWorkerNameOptions();
+                      Set<HashMap.Entry<Integer, String>> assetSet = assetSerialNum.entrySet();
+                      for (Entry<Integer, String> role : assetSet)
+                      {
+                    %>
+                         <option value="<%=role.getKey()%>">
+                             <%=role.getValue() %>
+                         </option>
+                    <%
+                      }
+                  %>
+                  
+                  
+              </select>  
+           
+           </div>
+
+<!--need to show the workers name that the log relates to to show who serviced it -->
+<div class="form-group">
+          <label for="inputEmail3" class="col-sm-2 control-label">Worker name who serviced the asset </label>
+              <select id="wkrWhoServiced" name="wkrWhoServiced">
+                  
+                  <% 
+                      HashMap workerNameMap = wo.getWorkerNameOptions();
+                      Set<HashMap.Entry<Integer, String>> nameSet = workerNameMap.entrySet();
+                      for (Entry<Integer, String> role : nameSet)
+                      {
+                    %>
+                         <option value="<%=role.getKey()%>">
+                             <%=role.getValue() %>
+                         </option>
+                    <%
+                      }
+                  %>
+                  
+              </select>
+           </div>
+
+
+<!--need to show the workers name that updated the service log - same options as above  -->
+
+<div class="form-group">
+          <label for="inputEmail3" class="col-sm-2 control-label">Workers name who updated log </label>
+              <select id="wkrWhoUpdated" name="wkrWhoUpdated">
+                  
+                  <% 
+                      HashMap workerNameMap2 = wo.getWorkerNameOptions();
+                      Set<HashMap.Entry<Integer, String>> nameSet2 = workerNameMap2.entrySet();
+                      for (Entry<Integer, String> role : nameSet2)
+                      {
+                    %>
+                         <option value="<%=role.getKey()%>">
+                             <%=role.getValue() %>
+                         </option>
+                    <%
+                      }
+                  %>
+                  
+                  
+              </select>  
+           
+           </div>
 
   <div class="form-group">
     <div class="col-sm-offset-2 col-sm-10">

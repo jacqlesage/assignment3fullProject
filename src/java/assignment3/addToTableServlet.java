@@ -7,6 +7,7 @@ package assignment3;
  */
 
 
+import controller.AssetObj;
 import controller.BusinessObj;
 import controller.WorkerObj;
 import java.io.IOException;
@@ -62,25 +63,38 @@ public class addToTableServlet extends HttpServlet {
             out.println("</body>");
             out.println("</html>");
             
-            String busName = request.getParameter("busName");
-            String busConNum = request.getParameter("busConNum");
-            int totalWorkers = Integer.valueOf(request.getParameter("totalWorkers"));
+//            String busName = request.getParameter("busName");
+//            String busConNum = request.getParameter("busConNum");
+//            int totalWorkers = Integer.valueOf(request.getParameter("totalWorkers"));
+//            //insert business into the table
+//            BusinessObj bo = new BusinessObj(busName, busConNum, totalWorkers);
+//            //bo.insertBusinessObj(bo);
+//            
+//            String fName = request.getParameter("fname");
+//            String mName = request.getParameter("mname");
+//            String lName = request.getParameter("lname");
+//            String gender = request.getParameter("gender");
+//            String dob = request.getParameter("dob");
+//            String isActive = request.getParameter("isActive");
+//            String startDate = request.getParameter("startDate");
+//            
+//            //insert worker into the table
+//            WorkerObj wo = new WorkerObj(fName, mName, lName, gender, dob, startDate, isActive);
+//            //wo.insertWorker(wo);
             
-            BusinessObj bo = new BusinessObj(busName, busConNum, totalWorkers);
-            bo.insertBusinessObj(bo);
+             String installDate = request.getParameter("ins_date");
+            String purchaseDate = request.getParameter("pur_date");
+            String model = request.getParameter("model");
+            String serialNum = request.getParameter("serial_num");
+            int numServices = Integer.valueOf(request.getParameter("num_services"));
+            int currCondition = Integer.valueOf(request.getParameter("cur_condition"));
+            String photo = request.getParameter("photo");
+            int busID = Integer.valueOf(request.getParameter("wkBusinessOption"));
+             int typeID = Integer.valueOf(request.getParameter("indTypeOption"));
             
-            String fName = request.getParameter("fname");
-            String mName = request.getParameter("mname");
-            String lName = request.getParameter("lname");
-            String gender = request.getParameter("gender");
-            String dob = request.getParameter("dob");
-            String isActive = request.getParameter("isActive");
-            String startDate = request.getParameter("startDate");
-            
-            
-            WorkerObj wo = new WorkerObj(fName, mName, lName, gender, dob, startDate, isActive);
-            
-            wo.insertWorker(wo);
+            //insert asset into the table
+            AssetObj ao = new AssetObj(installDate, purchaseDate, model, serialNum, numServices, currCondition, photo,busID,typeID);
+            ao.insertAssetObj(ao);
         }
     }
 
