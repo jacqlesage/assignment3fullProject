@@ -4,6 +4,7 @@
     Author     : jgoodman
 --%>
 
+<%@page import="controller.AssetObj"%>
 <%@page import="controller.WorkerObj"%>
 <%@page import="controller.IndustryObj"%>
 <%@page import="controller.BusinessTypeObj"%>
@@ -26,6 +27,7 @@
         <%BusinessTypeObj bto = new BusinessTypeObj(); %>
         <%IndustryObj io = new IndustryObj(); %>
         <%WorkerObj wo = new WorkerObj(); %>
+        <%AssetObj ao = new AssetObj(); %>
         
     </head>
     
@@ -344,7 +346,7 @@
   </div>
 </form>
 
-<form class="form-horizontal">
+                  <form class="form-horizontal" method="post" action="addToTableServlet">
     <h1>Add service log</h1>
   <div class="form-group">
     <label for="inputEmail3" class="col-sm-2 control-label">Date serviced</label>
@@ -355,14 +357,14 @@
   <div class="form-group">
     <label for="inputPassword3" class="col-sm-2 control-label">Electrical test done</label>
     <div class="col-sm-10">
-      <input type="text" class="form-control" id="elec_test_done" name="elec_test_done" placeholder="Electrical test done date">
+      <input type="text" class="form-control" id="elec_test_done" name="elec_test_done" maxlength="1" placeholder="Electrical test done Y or N">
     </div>
   </div>
     
      <div class="form-group">
     <label for="inputEmail3" class="col-sm-2 control-label">Calibration done</label>
     <div class="col-sm-10">
-      <input type="text" class="form-control" id="cali_done" name="cali_done" placeholder="Calibration done">
+      <input type="text" class="form-control" id="cali_done" name="cali_done" maxlength="1" placeholder="Calibration done Y or N">
     </div>
   </div>
     
@@ -386,7 +388,7 @@
               <select id="assetSerialNum" name="assetSerialNum">
                   
                   <% 
-                      HashMap assetSerialNum = wo.getWorkerNameOptions();
+                      HashMap assetSerialNum = ao.getAssetOptions();
                       Set<HashMap.Entry<Integer, String>> assetSet = assetSerialNum.entrySet();
                       for (Entry<Integer, String> role : assetSet)
                       {

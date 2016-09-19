@@ -8,9 +8,11 @@ package controller;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -150,4 +152,37 @@ public class AssetObj {
     
             
 }
+    public HashMap getAssetOptions() throws SQLException{
+        //return a hasMap which I can then use for the Role type, which
+        //we can then use to link the workers role to the specific Id's that have 
+        //been input into the worker_role table anyway
+        HashMap<Integer, String> hmap = new HashMap<Integer, String>(); 
+        
+        String sql = "SELECT ASSET_ID, SERIAL_NUMBER FROM ASSET";
+            
+            DriverManager.registerDriver (new oracle.jdbc.driver.OracleDriver());
+            
+            try (Connection con = DriverManager.getConnection(url, "jgoodman", "g00dmans");
+            PreparedStatement stmt = con.prepareStatement(sql);
+              ){
+            
+                
+                ResultSet rs = stmt.executeQuery(sql);
+                 
+                while(rs.next()){
+                     
+                    hmap.put(rs.getInt("ASSET_ID"), rs.getString("SERIAL_NUMBER"));
+//                     System.out.print(rs.getInt("ROLE_ID"));
+//                     System.out.println(rs.getString("ROLE_DESCRIPTION"));
+                }
+         
+         
+    } catch (SQLException ex) {
+            System.out.println("no customer found");
+            Logger.getLogger(WorkerObj.class.getName()).log(Level.SEVERE, null, ex); 
+    }
+            return hmap;
+    }
+    
+    
 }

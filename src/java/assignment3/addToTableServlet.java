@@ -60,6 +60,16 @@ public class addToTableServlet extends HttpServlet {
             out.println("<p>"+request.getParameter("busConNum")+"</p>");
             out.println("<p>"+request.getParameter("wkRoleOption")+"</p>");
             out.println("<p>"+request.getParameter("wkBusinessOption")+"</p>");
+            
+            out.println("<p>"+request.getParameter("date_serviced")+"</p>");
+            out.println("<p>"+request.getParameter("elec_test_done")+"</p>");
+            out.println("<p>"+request.getParameter("cali_done")+"</p>");
+            out.println("<p>"+request.getParameter("condition")+"</p>");
+            out.println("<p>"+request.getParameter("comments")+"</p>");
+            out.println("<p>"+request.getParameter("assetSerialNum")+"</p>");
+            out.println("<p>"+request.getParameter("wkrWhoServiced")+"</p>");
+            out.println("<p>"+request.getParameter("wkrWhoUpdated")+"</p>");
+                    
             out.println("</body>");
             out.println("</html>");
             
@@ -82,19 +92,22 @@ public class addToTableServlet extends HttpServlet {
 //            WorkerObj wo = new WorkerObj(fName, mName, lName, gender, dob, startDate, isActive);
 //            //wo.insertWorker(wo);
             
-             String installDate = request.getParameter("ins_date");
-            String purchaseDate = request.getParameter("pur_date");
-            String model = request.getParameter("model");
-            String serialNum = request.getParameter("serial_num");
-            int numServices = Integer.valueOf(request.getParameter("num_services"));
-            int currCondition = Integer.valueOf(request.getParameter("cur_condition"));
-            String photo = request.getParameter("photo");
-            int busID = Integer.valueOf(request.getParameter("wkBusinessOption"));
-             int typeID = Integer.valueOf(request.getParameter("indTypeOption"));
-            
-            //insert asset into the table
-            AssetObj ao = new AssetObj(installDate, purchaseDate, model, serialNum, numServices, currCondition, photo,busID,typeID);
-            ao.insertAssetObj(ao);
+//             String installDate = request.getParameter("ins_date");
+//            String purchaseDate = request.getParameter("pur_date");
+//            String model = request.getParameter("model");
+//            String serialNum = request.getParameter("serial_num");
+//            int numServices = Integer.valueOf(request.getParameter("num_services"));
+//            int currCondition = Integer.valueOf(request.getParameter("cur_condition"));
+//            String photo = request.getParameter("photo");
+//            int busID = Integer.valueOf(request.getParameter("wkBusinessOption"));
+//             int typeID = Integer.valueOf(request.getParameter("indTypeOption"));
+//            
+//            //insert asset into the table
+//            AssetObj ao = new AssetObj(installDate, purchaseDate, model, serialNum, numServices, currCondition, photo,busID,typeID);
+//            ao.insertAssetObj(ao);
+
+//add service log entry
+
         }
     }
 
