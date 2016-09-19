@@ -79,19 +79,19 @@ public class addToTableServlet extends HttpServlet {
 //            int totalWorkers = Integer.valueOf(request.getParameter("totalWorkers"));
 //            //insert business into the table
 //            BusinessObj bo = new BusinessObj(busName, busConNum, totalWorkers);
-//            //bo.insertBusinessObj(bo);
-//            
-//            String fName = request.getParameter("fname");
-//            String mName = request.getParameter("mname");
-//            String lName = request.getParameter("lname");
-//            String gender = request.getParameter("gender");
-//            String dob = request.getParameter("dob");
-//            String isActive = request.getParameter("isActive");
-//            String startDate = request.getParameter("startDate");
-//            
-//            //insert worker into the table
-//            WorkerObj wo = new WorkerObj(fName, mName, lName, gender, dob, startDate, isActive);
-//            //wo.insertWorker(wo);
+            //bo.insertBusinessObj(bo);
+            
+            String fName = request.getParameter("fname");
+            String mName = request.getParameter("mname");
+            String lName = request.getParameter("lname");
+            String gender = request.getParameter("gender");
+            String dob = request.getParameter("dob");
+            String isActive = request.getParameter("isActive");
+            String startDate = request.getParameter("startDate");
+            
+            //insert worker into the table
+            WorkerObj wo = new WorkerObj(fName, mName, lName, gender, dob, startDate, isActive);
+            wo.insertWorker(wo);
             
 //             String installDate = request.getParameter("ins_date");
 //            String purchaseDate = request.getParameter("pur_date");
@@ -107,20 +107,20 @@ public class addToTableServlet extends HttpServlet {
 //            AssetObj ao = new AssetObj(installDate, purchaseDate, model, serialNum, numServices, currCondition, photo,busID,typeID);
 //            ao.insertAssetObj(ao);
 
-//add service log entry
-
-            String ds = request.getParameter("date_serviced");
-            String etd = request.getParameter("elec_test_done");
-            String cd = request.getParameter("cali_done");
-            int c = Integer.valueOf(request.getParameter("condition"));
-            String com = request.getParameter("comments");
-            int asn = Integer.valueOf(request.getParameter("assetSerialNum"));
-            int wid1 = Integer.valueOf(request.getParameter("wkrWhoServiced"));
-            int wid2 = Integer.valueOf(request.getParameter("wkrWhoUpdated"));
-
-
-               ServiceLogObj slo = new ServiceLogObj(ds, etd, cd, c, com, asn, wid2, wid2);
-               slo.insertServiceLogObj(slo);
+////add service log entry
+//
+//            String ds = request.getParameter("date_serviced");
+//            String etd = request.getParameter("elec_test_done");
+//            String cd = request.getParameter("cali_done");
+//            int c = Integer.valueOf(request.getParameter("condition"));
+//            String com = request.getParameter("comments");
+//            int asn = Integer.valueOf(request.getParameter("assetSerialNum"));
+//            int wid1 = Integer.valueOf(request.getParameter("wkrWhoServiced"));
+//            int wid2 = Integer.valueOf(request.getParameter("wkrWhoUpdated"));
+//
+//
+//               ServiceLogObj slo = new ServiceLogObj(ds, etd, cd, c, com, asn, wid2, wid2);
+//               slo.insertServiceLogObj(slo);
                 
         }
     }

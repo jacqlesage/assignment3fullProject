@@ -1,0 +1,46 @@
+<%-- any content can be specified here e.g.: --%>
+<%@ page pageEncoding="UTF-8" %>
+<%@page import="controller.AssetObj"%>
+<%@page import="controller.WorkerObj"%>
+<%@page import="controller.IndustryObj"%>
+<%@page import="controller.BusinessTypeObj"%>
+<%@page import="java.util.Set"%>
+<%@page import="java.util.Map.Entry"%>
+<%@page import="java.util.HashMap"%>
+<%@page import="controller.WorkerRoleObj"%>
+<%@page import="controller.BusinessObj"%>
+<%--<%@page contentType="text/html" pageEncoding="UTF-8"%>--%>
+
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>JSP Page</title>
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <%WorkerRoleObj wro = new WorkerRoleObj(); %>
+        <%BusinessObj bo = new BusinessObj(); %>
+        <%BusinessTypeObj bto = new BusinessTypeObj(); %>
+        <%IndustryObj io = new IndustryObj(); %>
+        <%WorkerObj wo = new WorkerObj(); %>
+        <%AssetObj ao = new AssetObj(); %>
+        
+    </head>
+    
+        <nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Asset Wise</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="index.jsp">Home</a></li>
+      <li><a href="addWorker.jsp">Add Worker</a></li>
+      <li><a href="addAsset.jsp">Add asset</a></li>
+      <li><a href="addServiceLog.jsp">Add service log</a></li>
+      <li><a href="#">Reports</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+      <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+      <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+    </ul>
+  </div>
+</nav>

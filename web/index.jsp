@@ -4,51 +4,10 @@
     Author     : jgoodman
 --%>
 
-<%@page import="controller.AssetObj"%>
-<%@page import="controller.WorkerObj"%>
-<%@page import="controller.IndustryObj"%>
-<%@page import="controller.BusinessTypeObj"%>
-<%@page import="java.util.Set"%>
-<%@page import="java.util.Map.Entry"%>
-<%@page import="java.util.HashMap"%>
-<%@page import="controller.WorkerRoleObj"%>
-<%@page import="controller.BusinessObj"%>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+
+<%@include file = "WEB-INF/jspf/header.jspf" %>
 <!DOCTYPE html>
 
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
-        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-        <%WorkerRoleObj wro = new WorkerRoleObj(); %>
-        <%BusinessObj bo = new BusinessObj(); %>
-        <%BusinessTypeObj bto = new BusinessTypeObj(); %>
-        <%IndustryObj io = new IndustryObj(); %>
-        <%WorkerObj wo = new WorkerObj(); %>
-        <%AssetObj ao = new AssetObj(); %>
-        
-    </head>
-    
-        <nav class="navbar navbar-inverse">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="#">Asset Wise</a>
-    </div>
-    <ul class="nav navbar-nav">
-      <li class="active"><a href="#">Home</a></li>
-      <li><a href="#">Add Worker</a></li>
-      <li><a href="#">Add asset</a></li>
-      <li><a href="#">Add service log</a></li>
-      <li><a href="#">Reports</a></li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-      <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-      <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-    </ul>
-  </div>
-</nav>
         
 <!End nav bar >
 
@@ -105,7 +64,7 @@
   </div>
 </form>-->
 
-<form class="form-horizontal" method="post" action="addToTableServlet">
+<!--<form class="form-horizontal" method="post" action="addToTableServlet">
     <h1>Add worker</h1>
   <div class="form-group">
     <label for="inputEmail3" class="col-sm-2 control-label">First name</label>
@@ -158,7 +117,7 @@
       <div class="form-group">
           <label for="inputEmail3" class="col-sm-2 control-label">Role </label>
               <select id="wkRoleOption" name="wkRoleOption">
-                  
+                 <%-- 
                   <% 
                       HashMap workerRoleMap = wro.getRoleOptions(); 
                       Set<HashMap.Entry<Integer, String>> entrySet = workerRoleMap.entrySet();
@@ -171,7 +130,7 @@
                     <%
                       }
                   %>
-                  
+                  --%>
                   
               </select>  
            
@@ -180,8 +139,8 @@
       <div class="form-group">
     <label for="inputEmail3" class="col-sm-2 control-label">BUSINESS</label>
      <select id="wkBusinesOption" name="wkBusinessOption">
-                  
-                  <% 
+                 
+                  <%-- <% 
                       HashMap businessMap = bo.getBusinessOptions(); 
                       Set<HashMap.Entry<Integer, String>> entrySet2 = businessMap.entrySet();
                       for (Entry<Integer, String> type : entrySet2)
@@ -193,13 +152,13 @@
                     <%
                       }
                   %>
-                  
+                  --%>
                   
               </select>  
     
-  </div>
+  </div>-->
     
-    
+<!--    
      <h2>Add business</h2>
   <div class="form-group">
     <label for="inputEmail3" class="col-sm-2 control-label">Business name</label>
@@ -218,7 +177,7 @@
     <label for="inputEmail3" class="col-sm-2 control-label">Business type </label>
     
     <select id="busTypeOption" name="busTypeOption">
-                  
+                  <%--
                   <% 
                       HashMap businessTypeMap = bto.getBusinessTypeOptions(); 
                       Set<HashMap.Entry<Integer, String>> busTypeSet = businessTypeMap.entrySet();
@@ -231,12 +190,12 @@
                     <%
                       }
                   %>
-                  
+                  --%>
                   
               </select>  
     
-  </div>
-
+  </div>-->
+<!--
   <div class="form-group">
     <div class="col-sm-offset-2 col-sm-10">
       <button type="submit" class="btn btn-default">Sign in</button>
@@ -244,9 +203,9 @@
   </div>
     
    
-</form>
+</form>-->
 
-<form class="form-horizontal" method="post" action="addToTableServlet">
+<!--<form class="form-horizontal" method="post" action="addToTableServlet">
     
     <h1>Add asset</h1>
   <div class="form-group" >
@@ -301,7 +260,7 @@
     <label for="inputEmail3" class="col-sm-2 control-label">Industry type </label>
     
     <select id="indTypeOption" name="indTypeOption">
-                  
+                <%--  
                   <% 
                       HashMap industryTypeMap = io.getIndustryOptions(); 
                       Set<HashMap.Entry<Integer, String>> indTypeSet = industryTypeMap.entrySet();
@@ -314,7 +273,7 @@
                     <%
                       }
                   %>
-                  
+                  --%>
                   
               </select>  
     
@@ -322,7 +281,7 @@
     <div class="form-group">
     <label for="inputEmail3" class="col-sm-2 control-label">BUSINESS</label>
      <select id="wkBusinesOption" name="wkBusinessOption">
-                  
+                  <%-- 
                   <% 
                       HashMap businessMapForAsset = bo.getBusinessOptions(); 
                       Set<HashMap.Entry<Integer, String>> businessList = businessMapForAsset.entrySet();
@@ -336,7 +295,7 @@
                       }
                   %>
                   
-                  
+                  --%>
               </select>  
     
   </div>
@@ -346,9 +305,9 @@
       <button type="submit" class="btn btn-default">Sign in</button>
     </div>
   </div>
-</form>
+</form>-->
 
-                  <form class="form-horizontal" method="post" action="addToTableServlet">
+<!--                  <form class="form-horizontal" method="post" action="addToTableServlet">
     <h1>Add service log</h1>
   <div class="form-group">
     <label for="inputEmail3" class="col-sm-2 control-label">Date serviced</label>
@@ -384,11 +343,11 @@
     </div>
   </div>
  
-<!--need to show the asset serial number that the log relates to -->
+need to show the asset serial number that the log relates to 
  <div class="form-group">
           <label for="inputEmail3" class="col-sm-2 control-label">Asset serial number </label>
               <select id="assetSerialNum" name="assetSerialNum">
-                  
+                 <%-- 
                   <% 
                       HashMap assetSerialNum = ao.getAssetOptions();
                       Set<HashMap.Entry<Integer, String>> assetSet = assetSerialNum.entrySet();
@@ -401,17 +360,17 @@
                     <%
                       }
                   %>
-                  
+                  --%>
                   
               </select>  
            
            </div>
 
-<!--need to show the workers name that the log relates to to show who serviced it -->
+need to show the workers name that the log relates to to show who serviced it 
 <div class="form-group">
           <label for="inputEmail3" class="col-sm-2 control-label">Worker name who serviced the asset </label>
               <select id="wkrWhoServiced" name="wkrWhoServiced">
-                  
+                  <%-- 
                   <% 
                       HashMap workerNameMap = wo.getWorkerNameOptions();
                       Set<HashMap.Entry<Integer, String>> nameSet = workerNameMap.entrySet();
@@ -424,17 +383,17 @@
                     <%
                       }
                   %>
-                  
+                  --%>
               </select>
            </div>
 
 
-<!--need to show the workers name that updated the service log - same options as above  -->
+need to show the workers name that updated the service log - same options as above  
 
 <div class="form-group">
           <label for="inputEmail3" class="col-sm-2 control-label">Workers name who updated log </label>
               <select id="wkrWhoUpdated" name="wkrWhoUpdated">
-                  
+                <%--  
                   <% 
                       HashMap workerNameMap2 = wo.getWorkerNameOptions();
                       Set<HashMap.Entry<Integer, String>> nameSet2 = workerNameMap2.entrySet();
@@ -447,7 +406,7 @@
                     <%
                       }
                   %>
-                  
+                  --%>
                   
               </select>  
            
@@ -458,7 +417,7 @@
       <button type="submit" class="btn btn-default">Sign in</button>
     </div>
   </div>
-</form>
+</form>-->
         
     
 

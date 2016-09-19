@@ -106,7 +106,7 @@ public class AssetObj {
     
     
     public void insertAssetObj (AssetObj ao) throws SQLException, ParseException{
-        System.out.println("inside business object");
+        System.out.println("inside asset object");
         int curCondition = ao.getCur_condtion();
         String insDate = ao.getInstall_date();
         String model = ao.getModel();
