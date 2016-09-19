@@ -9,6 +9,7 @@ package assignment3;
 
 import controller.AssetObj;
 import controller.BusinessObj;
+import controller.ServiceLogObj;
 import controller.WorkerObj;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -108,6 +109,19 @@ public class addToTableServlet extends HttpServlet {
 
 //add service log entry
 
+            String ds = request.getParameter("date_serviced");
+            String etd = request.getParameter("elec_test_done");
+            String cd = request.getParameter("cali_done");
+            int c = Integer.valueOf(request.getParameter("condition"));
+            String com = request.getParameter("comments");
+            int asn = Integer.valueOf(request.getParameter("assetSerialNum"));
+            int wid1 = Integer.valueOf(request.getParameter("wkrWhoServiced"));
+            int wid2 = Integer.valueOf(request.getParameter("wkrWhoUpdated"));
+
+
+               ServiceLogObj slo = new ServiceLogObj(ds, etd, cd, c, com, asn, wid2, wid2);
+               slo.insertServiceLogObj(slo);
+                
         }
     }
 

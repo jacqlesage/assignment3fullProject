@@ -38,7 +38,9 @@
     </div>
     <ul class="nav navbar-nav">
       <li class="active"><a href="#">Home</a></li>
-      <li><a href="#">Admin</a></li>
+      <li><a href="#">Add Worker</a></li>
+      <li><a href="#">Add asset</a></li>
+      <li><a href="#">Add service log</a></li>
       <li><a href="#">Reports</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
