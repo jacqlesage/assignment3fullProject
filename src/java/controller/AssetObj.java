@@ -122,7 +122,7 @@ public class AssetObj {
             java.util.Date date2 = f.parse(insDate);
         
         
-        String sql = "INSERT INTO ASSET(INSTALL_DATE, PURCHASE_DATE, MODEL, SERIAL_NUMBER, NUMBER_SERVICES, VUR_CONDITION, PHOTO, BUSINESS_ID, INDUSTRY_ID)"
+        String sql = "INSERT INTO ASSET(INSTALL_DATE, PURCHASE_DATE, MODEL, SERIAL_NUMBER, NUMBER_SERVICES, CUR_CONDITION, PHOTO, BUSINESS_ID, INDUSTRY_ID)"
                 + "values(?,?,?,?,?,?,?,?,?)";
             
              DriverManager.registerDriver (new oracle.jdbc.driver.OracleDriver());

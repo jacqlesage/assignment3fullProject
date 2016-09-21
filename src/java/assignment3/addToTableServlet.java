@@ -88,9 +88,11 @@ public class addToTableServlet extends HttpServlet {
             String dob = request.getParameter("dob");
             String isActive = request.getParameter("isActive");
             String startDate = request.getParameter("startDate");
+            int busOption = Integer.valueOf(request.getParameter("wkBusinessOption"));
+            int roleOption = Integer.valueOf(request.getParameter("wkRoleOption"));
             
             //insert worker into the table
-            WorkerObj wo = new WorkerObj(fName, mName, lName, gender, dob, startDate, isActive);
+            WorkerObj wo = new WorkerObj(fName, mName, lName, gender, dob, startDate, isActive, busOption, roleOption);
             wo.insertWorker(wo);
             
 //             String installDate = request.getParameter("ins_date");

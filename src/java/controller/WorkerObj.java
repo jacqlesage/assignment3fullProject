@@ -33,10 +33,12 @@ public class WorkerObj {
     private String start_date;
     private String is_Active;
     private int worker_ID;
+    private int role_ID;
+    private int bus_ID;
     
     String url = "jdbc:oracle:thin:@" + "silver" + ":1527:cosc344";
 
-    public WorkerObj(String fName, String mName, String lName, String gender, String dob, String start_date, String is_Active) {
+    public WorkerObj(String fName, String mName, String lName, String gender, String dob, String start_date, String is_Active, int role_ID, int bus_ID) {
         this.fName = fName;
         this.mName = mName;
         this.lName = lName;
@@ -44,6 +46,16 @@ public class WorkerObj {
         this.dob = dob;
         this.start_date = start_date;
         this.is_Active = is_Active;
+        this.bus_ID = bus_ID;
+        this.role_ID = role_ID;
+    }
+
+    public int getRole_ID() {
+        return role_ID;
+    }
+
+    public int getBus_ID() {
+        return bus_ID;
     }
 
     public WorkerObj() {
@@ -125,6 +137,8 @@ public class WorkerObj {
          String woDOB = wo.getDob();
          String woStartDate = wo.getStart_date();
          String woIsActive = wo.getIs_Active();
+         int busOpt = wo.getBus_ID();
+         int roleOpt = wo.getRole_ID();
          
          SimpleDateFormat f = new SimpleDateFormat("dd/mm/yyyy");
             java.util.Date date1 = f.parse(woDOB);
@@ -150,8 +164,8 @@ public class WorkerObj {
                  stmt.setDate(5, new java.sql.Date(date1.getTime()));
                  stmt.setDate(6, new java.sql.Date(date2.getTime()));
                  stmt.setString(7, String.valueOf(woIsActive));
-                 stmt.setInt(8, 0);
-                 stmt.setInt(9, 1);
+                 stmt.setInt(8, roleOpt);
+                 stmt.setInt(9, busOpt);
          
                  stmt.executeUpdate();
          
